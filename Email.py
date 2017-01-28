@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 from email import encoders
 from FileHelper import FileHelper
 from PopupHelper import Popups
+from Settings import Settings
 
 """
 This class handles sending emails containing the timesheet
@@ -13,7 +14,7 @@ This class handles sending emails containing the timesheet
 
 class Email:
     @staticmethod
-    def _set_email(settings,excel):
+    def _set_email(settings, excel):
         """Constructs an email using MIME
         :return: Returns MIMEMultipart object
         """
@@ -25,8 +26,8 @@ class Email:
         msg['From'] = settings.user
         msg['To'] = ", ".join(dest)
 
-        body = """Howdy,\n\nHere is my time sheet from %s to %s. Have a good weekend!\n\nThanks,\n\nMike Gallant""" %\
-               (week_start, weekend)
+        body = """Howdy,\n\nHere is my time sheet from %s to %s. Have a good weekend!\n\nThanks,\n\n%s""" %\
+               (week_start, weekend, settings.name)
 
         derp = MIMEText(body, 'plain')
         msg.attach(derp)
@@ -34,16 +35,16 @@ class Email:
         attach = MIMEBase('application', "octet-stream")
         attach.set_payload(open(settings.active_xl, "rb").read())
         encoders.encode_base64(attach)
-        attach.add_header('Content-Disposition', 'attachment; filename="Timesheet_Mike_Gallant.xlsx"')
+        attach.add_header('Content-Disposition', 'attachment; filename="Timesheet ' + settings.name + '.xlsx"')
 
         msg.attach(attach)
 
         return msg
 
     @staticmethod
-    def _send_email_helper(settings,excel):
+    def _send_email_helper(settings, excel):
         """
-        Connects to Microsofts SMTP email server and sends an email using the users credentials.
+        Connects to SMTP email server and sends an email using the users credentials.
         :return:
         """
         try:
@@ -58,7 +59,7 @@ class Email:
             excel.clear_sheet()
             excel.gen_dates()
             Popups.email_sent()
-        except Exception,e:
+        except Exception, e:
             print(e.message)
             Popups.email_failed()
 
@@ -70,5 +71,5 @@ class Email:
         Call this to send an email.
         :return:
         """
-        #Email._set_email(settings,excel) Set the email in the helper.
-        Email._send_email_helper(settings,excel)
+        Email._set_email(settings, excel)
+        Email._send_email_helper(settings, excel)

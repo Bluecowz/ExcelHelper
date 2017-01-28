@@ -1,5 +1,4 @@
 from xml.dom.minidom import parse
-import xml.dom.minidom
 
 """
 This class stores the variables used throughout the program.
@@ -25,6 +24,7 @@ class Settings:
     dest_addr = ['', '']
     smtp_server = ''
     smtp_port = 587
+    name = ''
 
     # Log in credentials
     user = ""
@@ -47,6 +47,7 @@ class Settings:
         self.template_name = settings[0].getElementsByTagName('TemplateName')[0].childNodes[0].nodeValue
         self.active_xl = settings[0].getElementsByTagName('ActiveXL')[0].childNodes[0].nodeValue
         self.user = settings[0].getElementsByTagName('YourEmail')[0].childNodes[0].nodeValue
+        self.name = settings[0].getElementsByTagName('Name')[0].childNodes[0].nodeValue
         self.dest_addr = str(settings[0].getElementsByTagName('Recipient')[0].childNodes[0].nodeValue)
         self.smtp_server = settings[0].getElementsByTagName('STMPServer')[0].childNodes[0].nodeValue
         self.smtp_port = settings[0].getElementsByTagName('SMTPPort')[0].childNodes[0].nodeValue

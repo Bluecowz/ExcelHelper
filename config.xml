@@ -1,12 +1,13 @@
 <Settings>
-    <MyPath>Path to __main__.py</MyPath>
-    <ArchivePath>Path to Archive Folder</ArchivePath>
-    <TemplatePath>Path to excel template.</TemplatePath>
-    <TemplateName>SampleSheet.xlsx</TemplateName>
-    <ActiveXL>Current.xlsx</ActiveXL>
-    <YourEmail>Your email</YourEmail>
-    <Recipient>Self explain</Recipient>
-    <STMPServer>Your STMP server</STMPServer>
-    <SMTPPort>port</SMTPPort>
-    <Password>email password</Password>
+    <MyPath></MyPath>
+    <ArchivePath></ArchivePath>
+    <TemplatePath></TemplatePath>
+    <TemplateName></TemplateName>
+    <ActiveXL></ActiveXL>
+    <YourEmail></YourEmail>
+    <Name></Name>
+    <Recipient></Recipient>
+    <STMPServer></STMPServer>
+    <SMTPPort></SMTPPort>
+    <Password></Password>
 </Settings>

@@ -2,6 +2,7 @@ import openpyxl
 import datetime
 from Settings import Settings
 from PopupHelper import Popups
+from FileHelper import FileHelper
 
 """
 This class handles navigation and manipulation of the excel spreadsheet.
@@ -12,8 +13,15 @@ class ExcelHelper:
 
     def __init__(self):
         self.settings = Settings()
-        self._excel = openpyxl.load_workbook(self.settings.active_xl)
-        self._sheet = self._excel.active
+        try:
+            self._excel = openpyxl.load_workbook(self.settings.active_xl)
+            self._sheet = self._excel.active
+        except IOError:
+            print("Creating Current.xlsx")
+            FileHelper.create_current(self.settings)
+            self._excel = openpyxl.load_workbook(self.settings.active_xl)
+            self._sheet = self._excel.active
+            self.gen_dates()
 
         if self._new_sheet():
                 Popups.full_warning()
@@ -36,7 +44,7 @@ class ExcelHelper:
         """
         for y in range(3,8):
             for x in range(2,7):
-                self._sheet.cell(row=y,column=x).value = None
+                self._sheet.cell(row=y, column=x).value = None
 
     def add_time(self):
         """
@@ -49,11 +57,11 @@ class ExcelHelper:
             xl_date = xl_date_time.strftime('%m/%d/%Y')
             if xl_date == date:
                 for x in range(2, 6):
-                    if self._sheet.cell(row=y,column=x).value is None:
-                        self._sheet.cell(row=y,column=x).value = datetime.datetime.now().time().strftime("%I:%M %p")
+                    if self._sheet.cell(row=y, column=x).value is None:
+                        self._sheet.cell(row=y, column=x).value = datetime.datetime.now().time().strftime("%I:%M %p")
                         self._excel.save(self.settings.active_xl)
                         return
-                self._sheet.cell(row=y,column=5).value = datetime.datetime.now().time().strftime("%I:%M %p")
+                self._sheet.cell(row=y, column=5).value = datetime.datetime.now().time().strftime("%I:%M %p")
                 self._excel.save(self.settings.active_xl)
                 return
 
@@ -144,5 +152,6 @@ class ExcelHelper:
         if derp == day:
             return 0
         else:
-            return 1 + ExcelHelper._day_right(date + datetime.timedelta(days=1),day)
+            return 1 + ExcelHelper._day_right(date + datetime.timedelta(days=1), day)
+
 
