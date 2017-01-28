@@ -20,23 +20,7 @@ TODO:
 Dependencies:
 Openpyxl version 2.4.1
 
-Config file setup:
-
-config.xml
-
-<Settings>
-    <MyPath>Path to the current excel spreadsheet</MyPath>
-    <ArchivePath>Path to archive</ArchivePath>
-    <TemplatePath>Path to archive</TemplatePath>
-    <TemplateName>Template name</TemplateName>
-    <ActiveXL>The active name</ActiveXL>
-    <YourEmail>Your email</YourEmail>
-    <Name>Your name</Name>
-    <Recipient>Where is it going?</Recipient>
-    <STMPServer>STMP server</STMPServer>
-    <SMTPPort>Port</SMTPPort>
-    <Password>Email Password</Password>
-</Settings>
+Config file setup can be found in the example XML file.
 
 
 Feedback always welcome!
