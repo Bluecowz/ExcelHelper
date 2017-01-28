@@ -28,7 +28,7 @@ class Popups:
         If time manager failed to edit the spread sheet.
         :return:
         """
-        tkMessageBox.showerror("Failure","Failed to add to excel.", icon='warning')
+        tkMessageBox.showerror("Failure", "Failed to add to excel.", icon='warning')
 
     @staticmethod
     def full_warning():

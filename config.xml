@@ -1,13 +1,13 @@
 <Settings>
-    <MyPath></MyPath>
-    <ArchivePath></ArchivePath>
-    <TemplatePath></TemplatePath>
-    <TemplateName></TemplateName>
-    <ActiveXL></ActiveXL>
-    <YourEmail></YourEmail>
-    <Name></Name>
-    <Recipient></Recipient>
-    <STMPServer></STMPServer>
-    <SMTPPort></SMTPPort>
-    <Password></Password>
+    <MyPath>derp</MyPath>
+    <ArchivePath>derp</ArchivePath>
+    <TemplatePath>derp</TemplatePath>
+    <TemplateName>Template.xlsx</TemplateName>
+    <ActiveXL>derp.xlsx</ActiveXL>
+    <YourEmail>derp</YourEmail>
+    <Name>derp</Name>
+    <Recipient>derp</Recipient>
+    <STMPServer>derp</STMPServer>
+    <SMTPPort>derp</SMTPPort>
+    <Password>derp</Password>
 </Settings>

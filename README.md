@@ -22,5 +22,17 @@ Openpyxl version 2.4.1
 
 Config file setup can be found in the example XML file.
 
+Config 
+MyPath => Path to the current used sheet
+Archive => Folder for archiving timesheets
+TemplatePath => Path to the template timesheet
+TemplateName => Name of the template
+ActiveXL => Name of the active timesheet
+YourEmail => Self explained
+Name => Your name
+Recipient => Who is sent the timesheet?
+STMPServer => What is your STMP server?
+STMPPort => The port number
+Password => Email password (V2.0 will not save your email in a plan file)
 
 Feedback always welcome!

@@ -14,12 +14,11 @@ class ExcelHelper:
     def __init__(self):
         self.settings = Settings()
         try:
-            self._excel = openpyxl.load_workbook(self.settings.active_xl)
+            self._excel = openpyxl.load_workbook(self.settings.my_path + '\\' + self.settings.active_xl)
             self._sheet = self._excel.active
-        except IOError:
-            print("Creating Current.xlsx")
+        except IOError:  # Need to create an excel sheet.
             FileHelper.create_current(self.settings)
-            self._excel = openpyxl.load_workbook(self.settings.active_xl)
+            self._excel = openpyxl.load_workbook(self.settings.my_path + '\\' + self.settings.active_xl)
             self._sheet = self._excel.active
             self.gen_dates()
 
@@ -53,16 +52,16 @@ class ExcelHelper:
         """
         date = datetime.datetime.today().strftime('%m/%d/%Y')
         for y in range(3, 8):
-            xl_date_time = datetime.datetime.strptime(str(self._sheet.cell(row=y,column=1).value), '%m/%d/%Y')
+            xl_date_time = datetime.datetime.strptime(str(self._sheet.cell(row=y, column=1).value), '%m/%d/%Y')
             xl_date = xl_date_time.strftime('%m/%d/%Y')
             if xl_date == date:
                 for x in range(2, 6):
                     if self._sheet.cell(row=y, column=x).value is None:
                         self._sheet.cell(row=y, column=x).value = datetime.datetime.now().time().strftime("%I:%M %p")
-                        self._excel.save(self.settings.active_xl)
+                        self._excel.save(self.settings.my_path + '\\' + self.settings.active_xl)
                         return
                 self._sheet.cell(row=y, column=5).value = datetime.datetime.now().time().strftime("%I:%M %p")
-                self._excel.save(self.settings.active_xl)
+                self._excel.save(self.settings.my_path + '\\' + self.settings.active_xl)
                 return
 
     def add_desc(self, desc):
@@ -95,7 +94,7 @@ class ExcelHelper:
         for y in range(3, 8):
             self._sheet.cell(row=y, column=1, value=date.strftime("%m/%d/%Y"))
             date = date + datetime.timedelta(1)
-        self._excel.save(self.settings.active_xl)
+        self._excel.save(self.settings.my_path + '\\' + self.settings.active_xl)
 
     def week_start(self):
         """
