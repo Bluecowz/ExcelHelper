@@ -13,7 +13,7 @@ You will need to add 3 directories to the config file. The path of this program,
 template folder to create the timesheets.
 
 TODO:
-1)Find a better way to store the password. I understand it is an issue storing it in plain text.
+1) Find a better way to store the password. I understand it is an issue storing it in plain text.
 2) Send email in another thread to the UI is responsive.
 3) Overall efficiencies are needed.
 
