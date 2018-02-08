@@ -3,6 +3,7 @@ from Tkinter import Frame, Button, Text,\
 from ExcelHelper import ExcelHelper
 from Email import Email
 from PopupHelper import Popups
+from threading import Thread
 import tkMessageBox
 
 """
@@ -95,7 +96,9 @@ class TimeGUI:
         :return:
         """
         if Popups.send_confirmation():
-            Email.send_email(self._settings,self._excel)
+            thread = Thread(target=Email.send_email, args=(self._settings, self._excel,))
+            thread.start()
+            thread.join()
 
 
 
