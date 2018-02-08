@@ -1,3 +1,5 @@
+***Made some changes in order to create an .exe file. Broke some shit. Needs fixing.***
+
 Hello!
 
 
