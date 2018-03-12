@@ -59,9 +59,8 @@ class Email:
             excel.clear_sheet()
             excel.gen_dates()
             Popups.email_sent()
-        except Exception, e:
-            print(e.message)
-            Popups.email_failed()
+        except Exception:
+            print("Send email failed.")
 
 
 

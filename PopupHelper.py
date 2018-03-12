@@ -1,9 +1,9 @@
-import tkMessageBox
-from Tkinter import *
+from tkinter import *
 
 """
 Static class to handle feedback pop ups.
 """
+
 
 class Popups:
     @staticmethod

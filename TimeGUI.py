@@ -1,10 +1,9 @@
-from Tkinter import Frame, Button, Text,\
+from tkinter import Frame, Button, Text,\
     TOP, RIGHT, END, LEFT, BOTTOM, Label
 from ExcelHelper import ExcelHelper
 from Email import Email
 from PopupHelper import Popups
 from threading import Thread
-import tkMessageBox
 
 """
 This class generates the GUI and events needed.
